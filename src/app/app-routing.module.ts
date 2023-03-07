@@ -5,13 +5,18 @@ import { AddPostComponent } from './posts/add-post/add-post.component';
 import { EditPostComponent } from './posts/edit-post/edit-post.component';
 import { PostsListComponent } from './posts/posts-list/posts-list.component';
 import { SinglePostComponent } from './posts/single-post/single-post.component';
+import { PostResolver } from './posts/post.resolver';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'posts', component: PostsListComponent },
+  {
+    path: 'posts',
+    component: PostsListComponent,
+    resolve: { posts: PostResolver },
+  },
   { path: 'posts/add', component: AddPostComponent },
-  { path: 'posts/add/:id', component: EditPostComponent },
+  { path: 'posts/edit/:id', component: EditPostComponent },
   { path: 'posts/details/:id', component: SinglePostComponent },
 ];
 
