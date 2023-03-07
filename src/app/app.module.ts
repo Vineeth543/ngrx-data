@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment.development';
 import { HttpClientModule } from '@angular/common/http';
 import { PostsDataService } from './posts/post-data.service';
 import { PostResolver } from './posts/post.resolver';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, routingComponents],
@@ -18,9 +19,10 @@ import { PostResolver } from './posts/post.resolver';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     StoreModule.forRoot({}),
-    StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     EntityDataModule.forRoot(entityConfig),
   ],
   providers: [PostsDataService, PostResolver],
