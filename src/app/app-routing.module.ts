@@ -1,10 +1,29 @@
 import { NgModule } from '@angular/core';
+import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
+import { AddPostComponent } from './posts/add-post/add-post.component';
+import { EditPostComponent } from './posts/edit-post/edit-post.component';
+import { PostsListComponent } from './posts/posts-list/posts-list.component';
+import { SinglePostComponent } from './posts/single-post/single-post.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'posts', component: PostsListComponent },
+  { path: 'posts/add', component: AddPostComponent },
+  { path: 'posts/add/:id', component: EditPostComponent },
+  { path: 'posts/details/:id', component: SinglePostComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
+export const routingComponents = [
+  HomeComponent,
+  PostsListComponent,
+  AddPostComponent,
+  EditPostComponent,
+  SinglePostComponent,
+];
