@@ -21,8 +21,11 @@
               <button class="btn btn-success" routerLink="edit/{{ post.id }}">
                 Update
               </button>
-              <button class="btn btn-danger">
-                <!-- (click)="onDeletePost(post.id || '')" -->
+
+              <button
+                class="btn btn-danger"
+                (click)="onDeletePost(post.id || '')"
+              >
                 Delete
               </button>
             </td>

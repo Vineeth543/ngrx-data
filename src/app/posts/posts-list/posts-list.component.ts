@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Post } from 'src/app/models/post.model';
 import { PostService } from '../post.service';
+import { Post } from 'src/app/models/post.model';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-posts-list',
@@ -14,5 +14,9 @@ export class PostsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.posts$ = this.postService.entities$;
+  }
+
+  onDeletePost(id: string) {
+    this.postService.delete(id);
   }
 }

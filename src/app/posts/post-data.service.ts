@@ -1,3 +1,4 @@
+import { Update } from '@ngrx/entity';
 import { map, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Post } from '../models/post.model';
@@ -37,5 +38,20 @@ export class PostsDataService extends DefaultDataService<Post> {
           return { ...post, id: data.name };
         })
       );
+  }
+
+  override update(post: Update<Post>): Observable<Post> {
+    return this.http.put<Post>(
+      `https://angular-ngrx-c45dc-default-rtdb.firebaseio.com/posts/${post.id}.json`,
+      { ...post.changes }
+    );
+  }
+
+  override delete(id: string): Observable<string> {
+    return this.http
+      .delete(
+        `https://angular-ngrx-c45dc-default-rtdb.firebaseio.com/posts/${id}.json`
+      )
+      .pipe(map(() => id));
   }
 }
